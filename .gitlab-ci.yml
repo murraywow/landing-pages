@@ -1,0 +1,11 @@
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r . public/
+    - find public -maxdepth 1 -mindepth 1 -type d -name .git -prune -o -type f -name .gitlab-ci.yml -delete
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
